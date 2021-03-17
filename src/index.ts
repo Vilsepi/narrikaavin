@@ -95,6 +95,15 @@ export const main = async (): Promise<void> => {
     }
     console.log(`${name} (${ticker}): ${price} ${change} - ${category} ${isNew}`);
   }
+  console.log('');
+
+  const newsItems = await page.$$('#recent-articles > div > main > ul > li.content-list-item');
+  for(const newsItem of newsItems){
+    const title = await newsItem.$eval('h3', el => el.innerText);
+    const summary = await newsItem.$eval('p.content-item-promo', el => el.innerText);
+    const date = await newsItem.$eval('p.content-item-attributes > span.content-date', el => el.innerText);
+    console.log(`${title}: ${summary} (${date})`);
+  }
 
   await browser.close();
 };
