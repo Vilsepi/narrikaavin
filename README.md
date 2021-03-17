@@ -1,2 +1,3 @@
-# narrikaavin
-Yet another stonk scraper
+# Narrikaavin
+
+Narrikaavin kaapii narria.
